@@ -1,6 +1,6 @@
 <section id="task">
   <header>
-    <h2>{{name}}'s Tasks!</h2>
+    <h2>{{ name }}'s Tasks!</h2>
     <menu>
       <button (click)="onAddTaskBtnClick()">Add Task</button>
     </menu>
@@ -12,7 +12,8 @@
     } @else {
       @for (dummyTask of selectedUserTasks; track dummyTask.id) {
         <li>
-          <app-task [userTaskObjs]="dummyTask"  (completeClick)="onCompleteClickEvent($event)"></app-task>
+          <!-- <app-task [userTaskObjs]="dummyTask"  (completeClick)="onCompleteClickEvent($event)"></app-task> -->
+          <app-task [userTaskObjs]="dummyTask"></app-task>
         </li>
       }
     }
@@ -20,17 +21,15 @@
 
   @if (addingTask) {
     <div class="new-task">
-      <app-new-task  (cancel)="onCancelAddTask()" (create)="onAddNewTaskSubmit($event)"> 
-  
+      <app-new-task [userId]="userId" (close)="onCloseAddTask()">
       </app-new-task>
     </div>
-
   }
 </section>
 
- <!-- @if (isAddingTask) {
+<!-- @if (isAddingTask) {
     <div class="new-task">
       <!-- You can listen to a close/cancel event from the child here later -->
-      <!-- <app-new-task></app-new-task> -->
-    <!-- </div> -->
-  <!-- } --> 
+<!-- <app-new-task></app-new-task> -->
+<!-- </div> -->
+<!-- } -->

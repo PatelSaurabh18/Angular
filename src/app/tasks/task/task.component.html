@@ -1,10 +1,16 @@
+
+<app-card>
+
 <article>
   <!-- <h2>A Task of {{name}}</h2> -->
    <!-- <h3> Task ID :{{userTaskObjs.id}}</h3> -->
   <h2>{{userTaskObjs.title}}</h2>
-  <time> {{userTaskObjs.dueDate}}</time>
+  <time> {{userTaskObjs.dueDate | date:"fullDate"}}</time>
   <p>Summary : {{userTaskObjs.summary}}</p>
   <p class="actions">
     <button (click)="onCompleteClick()">Complete</button>
   </p>
 </article>
+
+</app-card>
+
