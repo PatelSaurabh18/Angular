@@ -1,13 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { type UserTaskObj} from './task.model';
 
 
-interface UserTaskObj {
-    id:string;
-    userId:string;
-    title:string;
-    dueDate:string;
-    summary:string;
-}
 @Component({
   selector: 'app-task',
   standalone: true,

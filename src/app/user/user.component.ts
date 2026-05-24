@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { DUMMY_USERS } from '../../dummy-users';
 import { Task } from 'zone.js/lib/zone-impl';
+import { type User} from './user.model';
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
@@ -22,11 +23,11 @@ import { Task } from 'zone.js/lib/zone-impl';
 this is not much preferred, use interface insted, but using type we can define any datatype data.
 */
 
-interface User{
-  id:string;
-  avatar:string;
-  name:string
-}
+// interface User{
+//   id:string;
+//   avatar:string;
+//   name:string
+// }
 /*
 using interface is most common and preferred,this can ONLY use objects.z
 */
@@ -45,6 +46,7 @@ export class UserComponent {
   // these @Input is used to take input from parent wihout using signal(1st approach)
 
 
+  @Input({required:true}) selected!:boolean;
   @Input({required:true}) user!: User;
   /*
   uisng directly an object is not recomenended instead use TS type or interface

@@ -1,9 +1,9 @@
 <article>
   <!-- <h2>A Task of {{name}}</h2> -->
-   <h3> Task ID :{{userTaskObjs.id}}</h3>
-  <h2>TASK TITLE : {{userTaskObjs.title}}</h2>
-  <time> TIME : {{userTaskObjs.dueDate}}</time>
-  <p>SUMMARY : {{userTaskObjs.summary}}</p>
+   <!-- <h3> Task ID :{{userTaskObjs.id}}</h3> -->
+  <h2>{{userTaskObjs.title}}</h2>
+  <time> {{userTaskObjs.dueDate}}</time>
+  <p>Summary : {{userTaskObjs.summary}}</p>
   <p class="actions">
     <button (click)="onCompleteClick()">Complete</button>
   </p>
