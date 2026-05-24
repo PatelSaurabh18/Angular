@@ -7,43 +7,53 @@
 <app-header />
 
 <main>
-  <ul id="users">
-    <li>
-      <app-user
-        [id]="users[0].id"
-        [avatar]="users[0].avatar"
-        [name]="users[0].name"
-        (select)="onSelectedUserShowTask($event)"
-      />
-    </li>
-    <li>
-      <app-user
-        [id]="users[1].id"
-        [avatar]="users[1].avatar"
-        [name]="users[1].name"
-        (select)="onSelectedUserShowTask($event)"
-      />
-    </li>
-    <li>
-      <app-user
-        [id]="users[2].id"
-        [avatar]="users[2].avatar"
-        [name]="users[2].name"
-        (select)="onSelectedUserShowTask($event)"
-      />
-    </li>
-    <li>
-      <app-user
-        [id]="users[3].id"
-        [avatar]="users[3].avatar"
-        [name]="users[3].name"
-        (select)="onSelectedUserShowTask($event)"
-      />
-    </li>
+
+
+   
+ <ul id="users">
+    @for (user of users; track user.id) {      
+      <li>
+        <app-user [user]="user" (select)="onSelectedUserShowTask($event)" />
+      </li>
+    }
   </ul>
 
-  
-<app-task [name]="selectedUser?.name"></app-task>  
-
+    @if(selectedUser){
+     <app-tasks [name]="selectedUser.name" [userId]="selectedUser.id"></app-tasks> 
+     <!-- since here we are ising if so TS knows that he will get the value defenately so no need to use > or ternary operator -->
+   }@else { 
+    <p id="fallback"> Select a User to see their Tasks! </p>
+   } 
 
 </main>
+
+
+<!-- using ngFor and ngIf is older thing and complex so @for and @if was introduced in angular 17 -->
+<!-- 
+    <ul id="users">
+      <li  *ngFor="let user of users" >
+        <app-user [user]="user" (select)="onSelectedUserShowTask($event)" />
+      </li>
+  </ul>
+
+     <app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser!.name"></app-tasks>
+
+    <ng-template #fallback>
+      <p id="fallback"> Select a User to see their Tasks! </p>
+    </ng-template> -->
+
+   <!-- Angular:
+       @for(user of users; track user.id)
+      is conceptually similar to React:
+      users.map(user => ( 
+  <User key={user.id} /> 
+    ))
+      Both use unique ID to:
+      identify elements uniquely
+      avoid unnecessary DOM recreation
+      optimize updates/re-rendering
+      So track in Angular is very similar to key in React.  -->
+  
+  <!-- we cant use anything other than "AtTheRatefor" inside template
+  so we can't use any other for loop although we have every loop which are in JS and we also don't use if directly instaed AtTheRateif is used
+  neither we can use any map,filter,reduce,find,some,every -->

@@ -13,6 +13,24 @@ import { Task } from 'zone.js/lib/zone-impl';
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
+// type User = {
+//   id:string;
+//   avatar:string;
+//   name:string
+// }
+/*
+this is not much preferred, use interface insted, but using type we can define any datatype data.
+*/
+
+interface User{
+  id:string;
+  avatar:string;
+  name:string
+}
+/*
+using interface is most common and preferred,this can ONLY use objects.z
+*/
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -21,10 +39,16 @@ import { Task } from 'zone.js/lib/zone-impl';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) name!: string;
+  // @Input({ required: true }) id!: string;
+  // @Input({ required: true }) avatar!: string;
+  // @Input({ required: true }) name!: string;
   // these @Input is used to take input from parent wihout using signal(1st approach)
+
+
+  @Input({required:true}) user!: User;
+  /*
+  uisng directly an object is not recomenended instead use TS type or interface
+  */
 
     @Output() select = new EventEmitter<string>();
 
@@ -54,7 +78,7 @@ export class UserComponent {
   // imagePath = computed(()=> "../../assets/users/"+this.avatar());
 
   get ImagePath() {
-    return '../../assets/users/' + this.avatar;
+    return '../../assets/users/' + this.user.avatar;
   }
   //both get and simple variable works with input signals so can use either
   //if using signal input so don't use getter although it works fine
@@ -75,7 +99,7 @@ export class UserComponent {
 
   onSelectUser() {
     // this.select.emit(this.id);
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
     console.log('Clicked!');
     // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
     // this.selectedUser.set(DUMMY_USERS[randomIndex]);

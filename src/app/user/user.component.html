@@ -1,6 +1,6 @@
 <div>
     <button (click)="onSelectUser()">
-        <img [src]="ImagePath" [alt]="name">
+        <img [src]="ImagePath" [alt]="user.name">
 
         <!-- <img [src]="imagePath()" [alt]="selectedUser().name"> -->
         <!-- it is PROPERTY_BINDING , we can use "selectedUserImage" variable also, both works same-->
@@ -8,6 +8,6 @@
 
         <!-- <img [attr.src]="selectedUserImage" alt="selected-user-image"> -->
         <!-- it is ATTRIBUTE_BINDING -->
-        <span> {{name}} </span>
+        <span> {{user.name}} </span>
     </button>
 </div>
