@@ -2,7 +2,7 @@
   <header>
     <h2>{{name}}'s Tasks!</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onAddTaskBtnClick()">Add Task</button>
     </menu>
   </header>
 
@@ -17,4 +17,20 @@
       }
     }
   </ul>
+
+  @if (addingTask) {
+    <div class="new-task">
+      <app-new-task  (cancel)="onCancelAddTask()" (create)="onAddNewTaskSubmit($event)"> 
+  
+      </app-new-task>
+    </div>
+
+  }
 </section>
+
+ <!-- @if (isAddingTask) {
+    <div class="new-task">
+      <!-- You can listen to a close/cancel event from the child here later -->
+      <!-- <app-new-task></app-new-task> -->
+    <!-- </div> -->
+  <!-- } --> 

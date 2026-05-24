@@ -1,0 +1,143 @@
+/* article {
+  padding: 1rem;
+  color: #25113d;
+  background-color: #bf9ee5;
+}
+
+h2 {
+  margin: 0;
+}
+
+time {
+  color: #3c2c50;
+}
+
+.actions {
+  text-align: right;
+  margin: 0;
+}
+
+.actions button {
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #380774;
+  color: #decdf2;
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #4a0774;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+} */
+
+/* 1. Dark transparent overlay covering the whole screen */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+/* 2. The centered pop-up form container */
+dialog {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: 90%;
+  max-width: 30rem;
+  padding: 2rem;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  background-color: #bf9ee5; /* Matches your task card bg */
+  color: #25113d; /* Matches your task text color */
+  z-index: 100;
+}
+
+dialog h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* 3. Form input layout formatting */
+form p {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #25113d;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #380774;
+  background-color: #decdf2;
+  box-sizing: border-box; /* Ensures padding doesn't break layout width */
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4a0774;
+  background-color: #ffffff;
+}
+
+/* 4. Action buttons at the bottom */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.actions button {
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Primary/Submit button (Create Task) */
+.actions button[type='submit'] {
+  background-color: #380774;
+  color: #decdf2;
+}
+
+.actions button[type='submit']:hover,
+.actions button[type='submit']:active {
+  background-color: #4a0774;
+}
+
+/* Cancel button styling */
+.actions button[type='button'] {
+  background-color: transparent;
+  color: #380774;
+}
+
+.actions button[type='button']:hover,
+.actions button[type='button']:active {
+  background-color: rgba(56, 7, 116, 0.1);
+}

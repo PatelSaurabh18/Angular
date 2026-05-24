@@ -1,10 +1,11 @@
-import { Component,EventEmitter,Input } from '@angular/core';
+import { Component,EventEmitter,Input,Output } from '@angular/core';
 import {TaskComponent} from './task/task.component';
-
+import { NewTaskComponent } from './new-task/new-task.component';
+import {  } from '@angular/core';
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent,NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -12,7 +13,12 @@ export class TasksComponent {
   @Input({required:true}) name!:string;
   @Input({required:true}) userId!:string;
 
+  // @Output() selectAddTask = new EventEmitter<boolean>();
   
+
+
+  addingTask = false;
+
 
 dummyTasks = [
   // u1 → 2 tasks
@@ -151,6 +157,34 @@ onCompleteClickEvent(id:string){
   
 }
 
+// Receive the custom object from the $event parameter
+onAddNewTaskSubmit(taskData: {title:string,summary:string,dueDate:string}){
+  // this.addingTask= true;
+   let newTaskObj = {
+    id: new Date().getTime().toString(), // Generates a unique simple timestamp ID string
+    userId: this.userId,                 // Links the new task directly to the active user!
+    title: taskData.title,
+    summary: taskData.summary,
+    dueDate: taskData.dueDate
+  };
+
+    // Push it into your main dummy data array
+    this.dummyTasks.push(newTaskObj);
+
+      // Close the form modal automatically
+    this.addingTask=false;
+}
+
+onAddTaskBtnClick(){
+  this.addingTask=true;
+}
+
+onCancelAddTask(){
+  this.addingTask=false;
+}
+
+
+
   // @Input({required:true}) name!: string;
   /*
   here we have to provide the name in string format otherwise throw an exception, using "!" doesn't gauranteee anuthing
@@ -175,7 +209,3 @@ onCompleteClickEvent(id:string){
 
 
 }
-function Output(): (target: TasksComponent, propertyKey: "select") => void {
-  throw new Error('Function not implemented.');
-}
-
