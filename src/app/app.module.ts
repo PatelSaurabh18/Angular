@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { TaskComponent } from './tasks/task/task.component';
-import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { SharedModule } from './shared/shared.module';
+import { TasksModule } from './tasks/tasks.module';
 
 /*
     Important Thing to keep in mind
@@ -20,9 +17,7 @@ so we have to import and use BrowserModule also which provides us FormsModule al
     AppComponent,
     HeaderComponent,
     UserComponent,
-    TasksComponent,
-    TaskComponent,
-    NewTaskComponent,
+    
   ],
   /*
     this declaration array is used for the non-stand-alone components
@@ -31,7 +26,7 @@ so we have to import and use BrowserModule also which provides us FormsModule al
   /*
     this bootstrap array is used for root component which has(within/inside itself) other non-stand-alone components
     */
-  imports: [BrowserModule, FormsModule,SharedModule], //although  TaskComponent uses DatePipe in its imports but still we don't have to add it to imports because the BrowserModule already inclues that
+  imports: [BrowserModule,SharedModule,TasksModule], //although  TaskComponent uses DatePipe in its imports but still we don't have to add it to imports because the BrowserModule already inclues that
 
   /*
     this imports array is used for the stand-alone components which we want to keep in 
