@@ -4,8 +4,8 @@ import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
-  standalone: true,
-  imports: [FormsModule],
+  standalone: false,
+  // imports: [FormsModule],// here we are uisng module(FormModule) in a standalone-component
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css'
 })

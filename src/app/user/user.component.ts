@@ -11,7 +11,6 @@ import {
 import { DUMMY_USERS } from '../../dummy-users';
 import { Task } from 'zone.js/lib/zone-impl';
 import { type User} from './user.model';
-import { CardComponent } from "../shared/card/card.component";
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
@@ -35,8 +34,7 @@ using interface is most common and preferred,this can ONLY use objects.z
 
 @Component({
   selector: 'app-user',
-  standalone: true,
-  imports: [CardComponent],
+  standalone: false,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
