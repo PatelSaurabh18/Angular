@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { CardComponent } from './shared/card/card.component';
 import { TaskComponent } from './tasks/task/task.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
+import { SharedModule } from './shared/shared.module';
 
 /*
     Important Thing to keep in mind
@@ -21,7 +21,6 @@ so we have to import and use BrowserModule also which provides us FormsModule al
     HeaderComponent,
     UserComponent,
     TasksComponent,
-    CardComponent,
     TaskComponent,
     NewTaskComponent,
   ],
@@ -32,7 +31,7 @@ so we have to import and use BrowserModule also which provides us FormsModule al
   /*
     this bootstrap array is used for root component which has(within/inside itself) other non-stand-alone components
     */
-  imports: [BrowserModule, FormsModule], //although  TaskComponent uses DatePipe in its imports but still we don't have to add it to imports because the BrowserModule already inclues that
+  imports: [BrowserModule, FormsModule,SharedModule], //although  TaskComponent uses DatePipe in its imports but still we don't have to add it to imports because the BrowserModule already inclues that
 
   /*
     this imports array is used for the stand-alone components which we want to keep in 
